@@ -1,7 +1,7 @@
 
 # ImmuneLLMs
 
-ImmuneLLMs is a specialized framework integrating Large Language Models (LLMs) and Graph Neural Networks (GNNs) for biological and immunological research.
+ImmuneLLMs is a specialized framework integrating Large Language Models (LLMs) and Protein Language Models (PLMs) for biological and immunological research.
 
 ---
 
@@ -9,7 +9,7 @@ ImmuneLLMs is a specialized framework integrating Large Language Models (LLMs) a
 
 ```bash
 # create environment
-conda create -n ImmuneLLMs python=3.9 -y
+conda create -n ImmuneLLMs python=3.10 -y
 conda activate ImmuneLLMs
 
 # CUDA 11.8
