@@ -21,7 +21,7 @@ pip install pandas==2.0.3 -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 pip install numpy==1.24.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
 
-pip install transformers -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install transformers==4.57.3 -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 pip install fair-esm==2.0.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
 
