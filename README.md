@@ -29,3 +29,4 @@ pip install datasets==2.19.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 pip install accelerate==1.12.0 peft==0.18.0  -i https://pypi.tuna.tsinghua.edu.cn/simple
 
+pip install scikit-learn -i https://pypi.tuna.tsinghua.edu.cn/simple
