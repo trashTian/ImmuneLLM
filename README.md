@@ -102,9 +102,14 @@ torchrun --nproc_per_node=8 SFT.py \
 After completing the SFT, use the following command to generate predictions and calculate evaluation metrics (AUC, PR-AUC, F1). We use torchrun to accelerate inference across multiple GPUs.
 ```
 # Distributed inference on 8 GPUs
-torchrun --nproc_per_node=8 ./scripts/Infer_sfted_qwen.py \
+torchrun --nproc_per_node=8 infer.py \
     --esm_strategy lora \
     --qwen_strategy lora \
     --checkpoint_path ./output/sft_v1/pytorch_model.bin
 ```
 
+Run case study:
+
+```
+python case_study.py
+```
