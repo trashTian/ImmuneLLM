@@ -1,0 +1,63 @@
+remove solvent
+bg_color white
+set ray_trace_mode, 2
+set ray_shadow, on
+set depth_cue, off
+set antialias, 2
+set ambient, 0.45
+set spec_reflect, 0.15
+set spec_power, 40
+show cartoon, all
+set cartoon_transparency, 0.5, all
+set_color tcr_gray, [0.45, 0.45, 0.45]
+set_color hla_lightblue, [0.65, 0.75, 0.90]
+set_color pep_magenta, [0.65, 0.0, 0.45]
+set_color cdr3_blue, [0.0, 0.2, 0.65]
+set_color focal_orange, [0.85, 0.35, 0.10]
+color tcr_gray, all
+color hla_lightblue, chain A or chain B
+color tcr_gray, chain D
+color pep_magenta, chain C
+set cartoon_transparency, 0.3, chain C
+select local_view, (chain E and resi 90-102) or (chain C and resi 1-9)
+set cartoon_transparency, 0.0, local_view
+color cdr3_blue, chain E and resi 90-102
+
+
+select tcr_shield_group, chain E and resi 94+95+101+102+103
+select pep_core, chain C and resi 4+5+6
+
+
+show surface, tcr_shield_group         
+set transparency, 0.35, tcr_shield_group
+set_color focal_gold, [0.0, 0.2, 0.65] 
+color focal_gold, tcr_shield_group
+
+show spheres, tcr_shield_group        
+set sphere_scale, 0.6, tcr_shield_group
+color focal_gold, tcr_shield_group
+
+
+show spheres, pep_core
+set_color pep_magenta, [0.65, 0.0, 0.45] 
+color pep_magenta, pep_core
+set sphere_scale, 0.75, pep_core
+set sphere_transparency, 0.5, pep_core
+
+
+set label_size, 20
+set label_font_id, 7
+set label_color, black
+set label_position, [2.5, 2.5, 2.5]   
+
+label chain E and resi 94 and name CA, "Tyr5"
+label chain E and resi 95 and name CA, "Val6"
+label chain E and resi 101 and name CA, "Leu12"
+label chain E and resi 102 and name CA, "Phe13"
+label chain E and resi 103 and name CA, "Phe14"
+
+
+center tcr_shield_group
+orient tcr_shield_group
+set ray_trace_fog, 1
+set fog_start, 0.45

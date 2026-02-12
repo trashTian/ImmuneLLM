@@ -1,0 +1,46 @@
+remove solvent
+bg_color white
+set ray_trace_mode, 2
+set ray_shadow, on
+set depth_cue, off
+set antialias, 2
+set ambient, 0.45
+set spec_reflect, 0.15
+set spec_power, 40
+show cartoon, all
+set cartoon_transparency, 0.5, all
+set_color tcr_gray, [0.45, 0.45, 0.45]
+set_color hla_lightblue, [0.65, 0.75, 0.90]
+set_color pep_magenta, [0.65, 0.0, 0.45]
+set_color cdr3_blue, [0.0, 0.2, 0.65]
+set_color focal_orange, [0.85, 0.35, 0.10]
+color tcr_gray, all
+color hla_lightblue, chain A or chain B
+color tcr_gray, chain D
+color pep_magenta, chain C
+set cartoon_transparency, 0.3, chain C
+select local_view, (chain E and resi 90-102) or (chain C and resi 1-9)
+set cartoon_transparency, 0.0, local_view
+color cdr3_blue, chain E and resi 90-102
+
+select tcr_n97, chain E and resi 97
+select pep_t7, chain C and resi 7
+show sticks, tcr_n97 or pep_t7
+set stick_radius, 0.3
+color focal_gold, tcr_n97 or pep_t7
+util.cnc tcr_n97 or pep_t7
+distance hb_focal, tcr_n97, pep_t7, mode=2
+set dash_color, grey20
+set dash_radius, 0.08
+set dash_gap, 0.3
+set label_color, black
+set label_size, 20
+set label_font_id, 7
+set label_position, (0, 0, 3)
+label tcr_n97 and name CA, "Asn97 (N8)"
+label pep_t7 and name CA, "Thr7 (P7)"
+center hb_focal
+set ray_trace_fog, 1
+set fog_start, 0.45
+orient hb_focal
+zoom hb_focal, 12

@@ -1,0 +1,50 @@
+remove solvent
+bg_color white
+set ray_trace_mode, 2
+set ray_shadow, on
+set depth_cue, off
+set antialias, 2
+set ambient, 0.45
+set spec_reflect, 0.15
+set spec_power, 40
+show cartoon, all
+set cartoon_transparency, 0.5, all
+set_color tcr_gray, [0.45, 0.45, 0.45]
+set_color hla_lightblue, [0.65, 0.75, 0.90]
+set_color pep_magenta, [0.65, 0.0, 0.45]
+set_color cdr3_blue, [0.0, 0.2, 0.65]
+set_color focal_gold, [0.9, 0.7, 0.2]
+color tcr_gray, all
+color hla_lightblue, chain A or chain B
+color tcr_gray, chain D
+color pep_magenta, chain C
+set cartoon_transparency, 0.3, chain C
+select cdr3_loop, chain E and resi 90-102
+show cartoon, cdr3_loop
+set cartoon_loop_radius, 0.4
+color cdr3_blue, cdr3_loop
+set cartoon_transparency, 0.0, cdr3_loop
+select g6_gly, chain E and resi 96
+select w5_trp, chain C and resi 5
+select gly_nodes, chain E and resi 96 or chain E and resi 99
+show spheres, g6_gly
+show sticks, w5_trp
+set sphere_scale, 0.6
+color focal_gold, g6_gly
+color pep_magenta, w5_trp
+set stick_radius, 0.25
+util.cbc w5_trp
+center g6_gly
+set label_color, black
+set label_size, 20
+set label_font_id, 7
+set label_position, (0, 0, 3)
+label gly_nodes and name CA, "Gly node"
+label w5_trp and name CA, "Bulky Trp5"
+set ray_trace_fog, 1
+set fog_start, 0.45
+orient
+turn y, 90
+zoom g6_gly, 10
+set cartoon_fancy_helices, 1
+set cartoon_smooth_loops, 1
