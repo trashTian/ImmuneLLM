@@ -22,7 +22,7 @@ To facilitate the review process, we have organized the repository as follows:
 
 
 ---
-### Step-by-Step Environment Setup
+### 1.Step-by-Step Environment Setup
 
 ```bash
 # create environment
@@ -47,3 +47,23 @@ pip install datasets==2.19.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install accelerate==1.12.0 peft==0.18.0  -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 pip install scikit-learn -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+---
+### 2. External Dependencies & Backbones
+Please download the following foundation models and pre-training datasets from HuggingFace:
+
+
+- LLM Backbone: Qwen3-4B-Instruct-2507 (https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507)
+- Protein Encoder: ESM2-3B (t36_3B_UR50D) (https://huggingface.co/facebook/esm2_t36_3B_UR50D)
+- Pretraining Dataset: UniProtQA Dataset (https://huggingface.co/datasets/PharMolix/UniProtQA)
+
+### 3. Processed Data Preparation
+Download our reasoning-enhanced datasets and checkpoints:
+
+Download Link: ImmuneLLM Processed Data ([Baidu Netdisk](https://pan.baidu.com/s/1f6OSt_Dh2WCrUtqx62mkpQ?pwd=8sws))
+
+Extraction Code: 8sws
+
+### 4. Training Pipeline
+
+
