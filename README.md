@@ -1,4 +1,4 @@
-- # ImmuneLLM: A Unified Multimodal LLM Framework for T-cell Antigen Binding Specificity
+# ImmuneLLM: A Unified Multimodal LLM Framework for T-cell Antigen Binding Specificity
 
 Accurate in silico prediction of T-cell antigen binding specificity is a key challenge in computational biology, critical for vaccine design and cancer immunotherapy. Existing discriminative methods achieve strong performance by learning sequence patterns but often overlook physicochemical semantics and domain knowledge underlying molecular interactions. Furthermore, effectively harnessing generative reasoning for interpretable, mechanism-aware prediction remains under-explored in T-cell antigen binding specificity tasks. To address these gaps, we propose \textbf{ImmuneLLM}, a neuro-symbolic generative framework that unifies peptide--HLA and peptide--TCR binding. By coupling a pre-trained protein encoder with a Large Language Model, we develop a dual-phase knowledge-enhanced instruction tuning strategy. This approach first employs Symbolic Knowledge Induction to derive explicit biophysical rules, followed by Iterative Rationale Refinement to align reasoning chains with these logical constraints. Such a design enables the model to not only predict binding specificity but also elucidate underlying biochemical mechanisms via mechanistic inference. Extensive evaluations show that ImmuneLLM achieves SOTA performance across multiple benchmarks. Notably, experimental results demonstrate superior data efficiency; even when evaluated on out-of-distribution benchmarks, ImmuneLLM performs on par with discriminative baselines while requiring only a fraction of the training data.
 ![image](pipeline.png)
@@ -65,5 +65,25 @@ Download Link: ImmuneLLM Processed Data ([Baidu Netdisk](https://pan.baidu.com/s
 Extraction Code: 8sws
 
 ### 4. Training Pipeline
+
+## 4.1 Pre-training
+Before running the pre-training script, you must update the local paths in PretrainEsmQformerQwen.py (or pass them as arguments) to match your local environment.
+
+⚠️ Configuration Note: Open PretrainEsmQformerQwen.py and modify the following path variables to point to your downloaded models and datasets:
+
+
+```
+# scripts/pretrain.py
+LLM_LOCAL_PATH = "path/to/your/Qwen3-4B-Instruct-2507"
+ESM2_LOCAL_PATH = "path/to/your/esm2_t36_3B_UR50D"
+DATASET_PATH = "path/to/your/uniprot_dataset"
+OUTPUT_DIR = "./output/pretrain_v1"
+```
+
+Then, execute the pre-training:
+```
+python  PretrainEsmQformerQwen.py
+```
+## 4.1 SFT
 
 
