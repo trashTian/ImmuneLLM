@@ -1,7 +1,7 @@
 - # ImmuneLLM: A Unified Multimodal LLM Framework for T-cell Antigen Binding Specificity
 
 Accurate in silico prediction of T-cell antigen binding specificity is a key challenge in computational biology, critical for vaccine design and cancer immunotherapy. Existing discriminative methods achieve strong performance by learning sequence patterns but often overlook physicochemical semantics and domain knowledge underlying molecular interactions. Furthermore, effectively harnessing generative reasoning for interpretable, mechanism-aware prediction remains under-explored in T-cell antigen binding specificity tasks. To address these gaps, we propose \textbf{ImmuneLLM}, a neuro-symbolic generative framework that unifies peptide--HLA and peptide--TCR binding. By coupling a pre-trained protein encoder with a Large Language Model, we develop a dual-phase knowledge-enhanced instruction tuning strategy. This approach first employs Symbolic Knowledge Induction to derive explicit biophysical rules, followed by Iterative Rationale Refinement to align reasoning chains with these logical constraints. Such a design enables the model to not only predict binding specificity but also elucidate underlying biochemical mechanisms via mechanistic inference. Extensive evaluations show that ImmuneLLM achieves SOTA performance across multiple benchmarks. Notably, experimental results demonstrate superior data efficiency; even when evaluated on out-of-distribution benchmarks, ImmuneLLM performs on par with discriminative baselines while requiring only a fraction of the training data.
-<img width="3228" height="1107" alt="image" src="https://github.com/user-attachments/assets/36b3c001-8741-495e-a30d-bb10077323bd" />
+![image](pipeline.png)
 
 ---
 
