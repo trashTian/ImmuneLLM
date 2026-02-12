@@ -26,17 +26,17 @@ def parse_args():
                         choices=["frozen", "lora", "full", "direct_lora"])
     
     # 路径配置
-    parser.add_argument("--qwen_path", type=str, default="/mnt/lustre/guopeijin/model/models/LLM-Research/Qwen3-4B-Instruct-2507")
-    parser.add_argument("--esm_path", type=str, default="/mnt/lustre/guopeijin/model/hub/models--facebook--esm2_t36_3B_UR50D/snapshots/476b639933c8baad5ad09a60ac1a87f987b656fc")
+    parser.add_argument("--qwen_path", type=str, default="Qwen3-4B-Instruct-2507")
+    parser.add_argument("--esm_path", type=str, default="models--facebook--esm2_t36_3B_UR50D/snapshots/476b639933c8baad5ad09a60ac1a87f987b656fc")
     
     # [关键] 这里指向 Raw SFT 训练好的 checkpoint (pytorch_model.bin)
     parser.add_argument("--pretrained_ckpt", type=str, 
-                        default="/mnt/lustre/guopeijin/Immune_LLM/code/trained_models/sft_qwen/esm_lora_qwen_lora/pytorch_model.bin",
+                        default="sft_qwen/esm_lora_qwen_lora/pytorch_model.bin",
                         help="Path to the Stage 2 (Raw SFT) checkpoint")
     
     # 数据集路径 (Mix Data)
-    parser.add_argument("--data_path", type=str, default="/mnt/lustre/guopeijin/Immune_LLM/code/data_prepare/stage2_sft_mixed_answer_only")
-    parser.add_argument("--output_base_dir", type=str, default="/mnt/lustre/guopeijin/Immune_LLM/code/trained_models/sft_qwen_mixed_v4")
+    parser.add_argument("--data_path", type=str, default="data_prepare/stage2_sft_mixed_answer_only")
+    parser.add_argument("--output_base_dir", type=str, default="trained_models/sft_qwen_mixed_v4")
     
     # 超参 (Mix SFT 通常 LR 较小)
     parser.add_argument("--lr", type=float, default=2e-5) 
