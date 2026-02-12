@@ -87,7 +87,7 @@ python  Pretrain.py
 
 ## 4.2 SFT
 This phase uses torchrun for multi-GPU distributed training.
-# Distributed training on 8 GPUs
+Distributed training on 8 GPUs
 ```
 torchrun --nproc_per_node=8 SFT.py \
     --esm_strategy lora \
@@ -101,7 +101,7 @@ torchrun --nproc_per_node=8 SFT.py \
 
 After completing the SFT, use the following command to generate predictions and calculate evaluation metrics (AUC, PR-AUC, F1). We use torchrun to accelerate inference across multiple GPUs.
 ```
-# Distributed inference on 8 GPUs
+Distributed inference on 8 GPUs
 torchrun --nproc_per_node=8 infer.py \
     --esm_strategy lora \
     --qwen_strategy lora \
