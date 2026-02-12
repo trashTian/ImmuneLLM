@@ -85,7 +85,7 @@ Then, execute the pre-training:
 python  Pretrain.py
 ```
 
-## 4.1 SFT
+## 4.2 SFT
 This phase uses torchrun for multi-GPU distributed training.
 # Distributed training on 8 GPUs
 ```
