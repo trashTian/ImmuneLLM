@@ -5,7 +5,8 @@ This directory contains the datasets and generation scripts for **ImmuneLLM**.
 ## 🔗 Data Download (Pre-processed)
 
 The final QA pairs for training and evaluation are available via the link below. These include the basic binding pairs and the reasoning-enhanced datasets.
-- **[Download Link]**: [Click here to download processed QA datasets]
+- **Download Link**: [ImmuneLLM Processed Data](https://pan.baidu.com/s/1f6OSt_Dh2WCrUtqx62mkpQ?pwd=8sws)
+- **Extraction Code**: `8sws`
 
 ## 📂 Directory Structure
 
