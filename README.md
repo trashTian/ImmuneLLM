@@ -16,9 +16,9 @@ Accurate in silico prediction of T-cell antigen binding specificity is a key cha
 
 To facilitate the review process, we have organized the repository as follows:
 
-- **[📊 Datasets & Knowledge Base](./data)**: Access the UnifyImmun benchmark, induced biophysical rules, and pre-processed QA pairs.
-- **[⚖️ Baselines & Benchmarking](./baselines)**: Detailed implementation and 5-fold bootstrap evaluation scripts for SOTA baselines (T-SCAPE, TEIM, DeepAntigen, etc.).
-- **[🔬 Case Study](./case_studies)**: 5 detailed reasoning instances probing the model's biophysical decision-making.
+- **[📊 Datasets are in the folder ./data](./data)**: Access the UnifyImmun benchmark, induced biophysical rules, and pre-processed QA pairs.
+- **[⚖️ Baselines are in the folder ./baselines](./baselines)**: Detailed implementation and 5-fold bootstrap evaluation scripts for SOTA baselines (T-SCAPE, TEIM, DeepAntigen, etc.).
+- **[🔬 Case Study are in the folder ./case_studies](./case_studies)**: 5 detailed reasoning instances probing the model's biophysical decision-making.
 
 
 ---
