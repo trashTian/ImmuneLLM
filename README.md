@@ -67,9 +67,9 @@ Extraction Code: 8sws
 ### 4. Training Pipeline
 
 ## 4.1 Pre-training
-Before running the pre-training script, you must update the local paths in PretrainEsmQformerQwen.py (or pass them as arguments) to match your local environment.
+Before running the pre-training script, you must update the local paths in Pretrain.py (or pass them as arguments) to match your local environment.
 
-⚠️ Configuration Note: Open PretrainEsmQformerQwen.py and modify the following path variables to point to your downloaded models and datasets:
+⚠️ Configuration Note: Open Pretrain.py and modify the following path variables to point to your downloaded models and datasets:
 
 
 ```
@@ -82,8 +82,18 @@ OUTPUT_DIR = "./output/pretrain_v1"
 
 Then, execute the pre-training:
 ```
-python  PretrainEsmQformerQwen.py
+python  Pretrain.py
 ```
-## 4.1 SFT
 
+## 4.1 SFT
+This phase uses torchrun for multi-GPU distributed training.
+# Distributed training on 8 GPUs
+```
+torchrun --nproc_per_node=8 SFT.py \
+    --esm_strategy lora \
+    --qwen_strategy lora \
+    --batch_size 128 \
+    --grad_accum 1 \
+    --epochs 2
+```
 
