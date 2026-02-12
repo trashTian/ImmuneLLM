@@ -18,7 +18,7 @@ To facilitate the review process, we have organized the repository as follows:
 
 - **[📊 Datasets & Knowledge Base](./data)**: Access the UnifyImmun benchmark, induced biophysical rules, and pre-processed QA pairs.
 - **[⚖️ Baselines & Benchmarking](./baselines)**: Detailed implementation and 5-fold bootstrap evaluation scripts for SOTA baselines (T-SCAPE, TEIM, DeepAntigen, etc.).
-- **[🔬 Case Study Audit](./case_studies)**: 5 detailed reasoning instances probing the model's biophysical decision-making.
+- **[🔬 Case Study](./case_studies)**: 5 detailed reasoning instances probing the model's biophysical decision-making.
 
 
 ---
@@ -95,5 +95,16 @@ torchrun --nproc_per_node=8 SFT.py \
     --batch_size 128 \
     --grad_accum 1 \
     --epochs 2
+```
+
+### 5. Inference & Evaluation
+
+After completing the SFT, use the following command to generate predictions and calculate evaluation metrics (AUC, PR-AUC, F1). We use torchrun to accelerate inference across multiple GPUs.
+```
+# Distributed inference on 8 GPUs
+torchrun --nproc_per_node=8 ./scripts/Infer_sfted_qwen.py \
+    --esm_strategy lora \
+    --qwen_strategy lora \
+    --checkpoint_path ./output/sft_v1/pytorch_model.bin
 ```
 
