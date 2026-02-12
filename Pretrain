@@ -20,11 +20,11 @@ from modules import QFormer
 # 0. 配置区域 [修改]
 # ==========================================
 # 修改为 Qwen 的路径
-LLM_LOCAL_PATH = "/mnt/lustre/guopeijin/model/models/LLM-Research/Qwen3-4B-Instruct-2507"  # 请替换为你实际的 Qwen 模型路径
-ESM2_LOCAL_PATH = "/mnt/lustre/guopeijin/model/hub/models--facebook--esm2_t36_3B_UR50D/snapshots/476b639933c8baad5ad09a60ac1a87f987b656fc"
-DATASET_PATH = "/mnt/lustre/guopeijin/data/LLAPA/dataset/pretrain/uniprot"
+LLM_LOCAL_PATH = "Qwen3-4B-Instruct-2507"  # 请替换为你实际的 Qwen 模型路径
+ESM2_LOCAL_PATH = "models--facebook--esm2_t36_3B_UR50D/snapshots/476b639933c8baad5ad09a60ac1a87f987b656fc"
+DATASET_PATH = "dataset/pretrain/uniprot"
 
-OUTPUT_DIR = "/mnt/lustre/guopeijin/Immune_LLM/code/trained_models/pretrain_EsmQformerQwen_v1"
+OUTPUT_DIR = "/trained_models/pretrain_EsmQformerQwen_v1"
 
 
 # ==========================================
