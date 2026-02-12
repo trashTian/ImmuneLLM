@@ -1,0 +1,89 @@
+{
+    "rule_id": "HLA_I_A02_HYDROPHOBIC_ANCHOR",
+    "description": "A02 Supertype: Index 3 is M/Q. Creates a hydrophobic B-pocket favoring L/M/I/V at P2.",
+    "python_condition": {
+      "hla_indices": [3], "hla_values": ["M", "Q"], "peptide_index": 1,
+      "peptide_allowed": ["L", "M", "I", "V", "Q", "A", "T"], "peptide_forbidden": ["D", "E", "R", "K", "P"]
+    }
+  },
+  {
+    "rule_id": "HLA_I_B27_SALT_BRIDGE_FINAL",
+    "description": "B27/B14 Supertype: Index 3 is E. Strongly prefers Basic P2 (R/K). Strictly forbids Acidic.",
+    "python_condition": {
+      "hla_indices": [3], "hla_values": ["E"], "peptide_index": 1,
+      "peptide_allowed": ["R", "K", "H", "Q", "L", "M", "V", "I"], "peptide_forbidden": ["D", "E", "P"] 
+    }
+  },
+  {
+    "rule_id": "HLA_I_B44_ACIDIC_P2_GOLD",
+    "description": "B44 Supertype: Index 3 is K. Strictly requires Acidic P2 (E/D).",
+    "python_condition": {
+      "hla_indices": [3], "hla_values": ["K"], "peptide_index": 1,
+      "peptide_allowed": ["E", "D"], "peptide_forbidden": ["R", "K", "H", "L", "M", "F", "Y", "W"]
+    }
+  },
+  {
+    "rule_id": "HLA_I_A03_A11_BASIC_CTERM",
+    "description": "A03/A11: Index 22 is D. Prefers Basic C-term, forbids Acidic C-term.",
+    "python_condition": {
+      "hla_indices": [22], "hla_values": ["D"], "peptide_index": -1,
+      "peptide_allowed": ["K", "R", "H", "Y", "F", "L"], "peptide_forbidden": ["D", "E"]
+    }
+  },
+  {
+    "rule_id": "HLA_I_A01_TYROSINE_CTERM",
+    "description": "A01: Index 22 is Y. Prefers Aromatic/Hydrophobic C-term.",
+    "python_condition": {
+      "hla_indices": [22], "hla_values": ["Y"], "peptide_index": -1,
+      "peptide_allowed": ["Y", "F", "L", "I", "W"], "peptide_forbidden": ["D", "E", "P", "R", "K"]
+    }
+  },
+  {
+    "rule_id": "HLA_I_C_HYDROPHOBIC_PREF",
+    "description": "HLA-C: Index 22 is F or Y. Prefers Hydrophobic C-term.",
+    "python_condition": {
+      "hla_indices": [22], "hla_values": ["F", "Y"], "peptide_index": -1,
+      "peptide_allowed": ["L", "I", "V", "M", "F", "A"], "peptide_forbidden": ["D", "E", "R", "K"]
+    }
+  },
+  {
+    "rule_id": "HLA_I_A26_TYROSINE_CTERM",
+    "description": "A26: Index 22 is H. Prefers Aromatic C-term.",
+    "python_condition": {
+      "hla_indices": [22], "hla_values": ["H"], "peptide_index": -1,
+      "peptide_allowed": ["Y", "F", "L", "V"], "peptide_forbidden": ["D", "E"]
+    }
+  },
+  {
+    "rule_id": "HLA_I_STERIC_F_GLY",
+    "description": "Physics: Bulky F-pocket (F/Y/W at Index 22) discourages Glycine (G) due to entropy.",
+    "python_condition": {
+      "hla_indices": [22], "hla_values": ["F", "Y", "W"], "peptide_index": -1,
+      "peptide_allowed": ["L", "I", "V", "F", "Y"], "peptide_forbidden": ["G", "P"]
+    }
+  },
+  {
+    "rule_id": "HLA_I_GENERAL_CHARGE_SAFETY",
+    "description": "Physics: Double Charge Repulsion. If both anchors are D/E, binding fails.",
+    "python_condition": {
+      "hla_indices": [3, 22], "hla_values": [["L", "I", "V", "M", "Y", "F", "W"], ["L", "I", "V", "M", "Y", "F", "W"]], "peptide_index": "BOTH_ANCHORS",
+      "peptide_allowed": [], "peptide_forbidden": ["D", "E"]
+    }
+  },
+  {
+    "rule_id": "HLA_I_A24_AROMATIC_PRECISION",
+    "description": "A24 Supertype: Index 3 is Y/F/M AND Index 20 is F/Y. Prefers Aromatic (Y/F/W) or Leucine at P2.",
+    "python_condition": {
+      "hla_indices": [3, 20], "hla_values": [["Y", "F", "M"], ["F", "Y"]], 
+      "peptide_index": 1,
+      "peptide_allowed": ["Y", "F", "W", "L", "M", "I"], "peptide_forbidden": ["D", "E", "R", "K", "P", "G"]
+    }
+  },
+  {
+    "rule_id": "HLA_I_B07_PROLINE_PRECISION",
+    "description": "B07/B35 Supertype: Index 6 is N/Y/F. Strongly favors Proline (P) or small Hydrophobic (A/V) at P2.",
+    "python_condition": {
+      "hla_indices": [6], "hla_values": ["N", "Y", "F"], "peptide_index": 1,
+      "peptide_allowed": ["P", "A", "V"], "peptide_forbidden": ["W", "F", "Y", "D", "E", "R", "K"]
+    }
+  }

@@ -1,0 +1,127 @@
+{
+    "rule_id": "TCR_HYDROPHOBIC_SHIELDING",
+    "description": "Desolvation: Highly hydrophobic Peptide Core (>=3 residues) requires Hydrophobic/Aromatic CDR3 to exclude water.",
+    "python_condition": {
+      "cdr3_region": "CENTER_5",
+      "peptide_region": "EXPOSED_CORE",
+      "peptide_hydrophobic_threshold": 3,
+      "cdr3_must_contain": ["Y", "W", "L", "V", "I", "F", "M", "A"],
+      "logic_operator": "HYDROPHOBIC_COMPLEMENTARITY",
+      "outcome": "PASS"
+    }
+  },
+  {
+    "rule_id": "TCR_CHARGE_REPULSION_POS",
+    "description": "Electrostatic Clash: Both CDR3 Center and Peptide Exposed Core contain residues of the same POSITIVE charge, creating local repulsion.",
+    "python_condition": {
+      "cdr3_region": "CENTER_5",
+      "peptide_region": "EXPOSED_CORE",
+      "target_property": "NET_CHARGE_POSITIVE",
+      "logic_operator": "NO_SAME_CHARGE_SIGN",
+      "outcome": "FAIL"
+    }
+  },
+  {
+    "rule_id": "TCR_CHARGE_REPULSION_NEG",
+    "description": "Electrostatic Clash: Both CDR3 Center and Peptide Exposed Core contain residues of the same NEGATIVE charge, creating local repulsion.",
+    "python_condition": {
+      "cdr3_region": "CENTER_5",
+      "peptide_region": "EXPOSED_CORE",
+      "target_property": "NET_CHARGE_NEGATIVE",
+      "logic_operator": "NO_SAME_CHARGE_SIGN",
+      "outcome": "FAIL"
+    }
+  },
+  {
+    "rule_id": "TCR_SALT_BRIDGE_DE_RK",
+    "description": "Salt Bridge: CDR3 Center Asp/Glu (D/E) forms salt bridges with Peptide Exposed Core Arg/Lys (R/K).",
+    "python_condition": {
+      "cdr3_region": "CENTER_5",
+      "peptide_region": "EXPOSED_CORE",
+      "cdr3_must_contain": ["D", "E"],
+      "peptide_must_contain": ["R", "K"],
+      "logic_operator": "SALT_BRIDGE_MATCH",
+      "outcome": "PASS"
+    }
+  },
+  {
+    "rule_id": "TCR_ARG_GOVERNOR_MOTIF",
+    "description": "Arginine Governor: Central CDR3 Arginine (R) targets Acidic or Polar residues in Peptide.",
+    "python_condition": {
+      "cdr3_region": "CENTER_5",
+      "peptide_region": "EXPOSED_CORE",
+      "cdr3_must_contain": ["R"],
+      "peptide_must_contain": ["D", "E", "N", "Q", "S", "T"],
+      "logic_operator": "ARG_ACIDIC_POLAR_MATCH",
+      "outcome": "PASS"
+    }
+  },
+  {
+    "rule_id": "TCR_GLYCINE_HINGE_LONG",
+    "description": "Hinge: Peptides longer than 10 AA require Glycine (G) in CDR3 for flexibility.",
+    "python_condition": {
+      "check_level": "SEQUENCE_META",
+      "peptide_length_min": 11,
+      "cdr3_must_contain": ["G"],
+      "logic_operator": "LENGTH_DEPENDENT_FLEXIBILITY",
+      "outcome": "PASS"
+    }
+  },
+  {
+    "rule_id": "TCR_TYROSINE_UNIVERSAL",
+    "description": "Tyrosine Universal: Y in CDR3 Center enables binding via H-bonding and pi-stacking.",
+    "python_condition": {
+      "cdr3_region": "CENTER_5",
+      "cdr3_must_contain": ["Y"],
+      "logic_operator": "TYROSINE_PRESENT",
+      "outcome": "PASS"
+    }
+  },
+  {
+    "rule_id": "TCR_CENTRAL_HYDROPHOBICITY_MISMATCH",
+    "description": "Mismatch: High hydrophobicity CDR3 (>=2) cannot bind hydrophilic Peptide Core (>=3).",
+    "python_condition": {
+      "cdr3_region": "CENTER_5",
+      "peptide_region": "EXPOSED_CORE",
+      "cdr3_hydrophobic_threshold": 2,
+      "peptide_hydrophilic_threshold": 3,
+      "logic_operator": "HYDROPHOBIC_MISMATCH",
+      "outcome": "FAIL"
+    }
+  },
+  {
+    "rule_id": "TCR_POLAR_NETWORK_Q_N",
+    "description": "H-Bond Network: CDR3 uses Amide groups (Q/N) to engage with Polar Peptide residues.",
+    "python_condition": {
+      "cdr3_region": "CENTER_5",
+      "peptide_region": "EXPOSED_CORE",
+      "cdr3_must_contain": ["Q", "N"],
+      "peptide_must_contain": ["S", "T", "N", "Q", "Y"],
+      "logic_operator": "CONTAINS_MATCH",
+      "outcome": "PASS"
+    }
+  },
+  {
+    "rule_id": "TCR_AROMATIC_STACK_W",
+    "description": "Pi-Stacking: CDR3 Tryptophan (W) locks into Peptide Aromatics (F/Y/W).",
+    "python_condition": {
+      "cdr3_region": "CENTER_5",
+      "peptide_region": "EXPOSED_CORE",
+      "cdr3_must_contain": ["W"],
+      "peptide_must_contain": ["F", "Y", "W"],
+      "logic_operator": "CONTAINS_MATCH",
+      "outcome": "PASS"
+    }
+  },
+  {
+    "rule_id": "TCR_THREONINE_CAP",
+    "description": "Threonine Capping: CDR3 Threonine (T) provides geometric fit for hydrophobic/small peptides.",
+    "python_condition": {
+      "cdr3_region": "CENTER_5",
+      "peptide_region": "EXPOSED_CORE",
+      "cdr3_must_contain": ["T"],
+      "peptide_must_contain": ["A", "V", "L", "I", "S"],
+      "logic_operator": "CONTAINS_MATCH",
+      "outcome": "PASS"
+    }
+  }
