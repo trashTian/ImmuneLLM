@@ -1,0 +1,39 @@
+# Role
+You are an Immunologist specializing in **TCR-pMHC recognition**.
+Your task is to define **Physicochemical Compatibility Rules** for the interaction between TCR CDR3 (Beta chain) and the Antigen Peptide.
+
+# Context: The Interaction Model
+TCR binding is not governed by "pockets" but by **Interface Complementarity**.
+*   **Contact Zone**: The central ~5 residues of the CDR3 beta loop typically contact the central ~3-5 residues of the Peptide (the "Bulge").
+*   **Mechanism**: Binding is driven by Electrostatics (Charge Match), Hydrophobicity (Water Exclusion), and Steric Fit.
+
+# Task
+Generate **15 Rules** to evaluate the compatibility between a TCR sequence and a Peptide sequence.
+
+# Requirements
+1.  **Central Charge Filter**: If CDR3 center is Positive, Peptide center should NOT be Positive (Repulsion).
+2.  **Hydrophobic Sandwich**: If Peptide is highly hydrophobic, CDR3 often uses hydrophobic motifs (e.g., G-G linkers or A/V/L rich) to stabilize the interface.
+3.  **Cysteine/Tryptophan Checks**: Ensure the CDR3 has valid boundaries (C at start, F/W at end) - strictly structural check.
+4.  **Length Constraints**: Extremely short CDR3s (<8 AA) may not reach the peptide in certain HLA contexts.
+
+# Output Format (JSON)
+[
+  {
+    "rule_id": "TCR_PEP_CHARGE_REPULSION",
+    "region": "Central Interface",
+    "description": "Electrostatic repulsion destabilizes binding. If both the CDR3 central window (index 4 to -4) and Peptide central window carry a net Positive charge (>+1), binding is unlikely.",
+    "python_condition": {
+      "logic": "calculate_net_charge(seq_window)",
+      "condition": "charge(cdr3_mid) * charge(pep_mid) > 1.5" // Both strongly same sign
+    }
+  },
+  {
+    "rule_id": "TCR_AROMATIC_CONTACT",
+    "region": "CDR3 Tip",
+    "description": "Aromatic residues (Y, F, W) in the CDR3 tip often facilitate binding by stacking with Peptide residues.",
+    "python_condition": {
+      "logic": "residue_count",
+      "condition": "If Peptide center has [P, F, Y], CDR3 center benefits from having [Y, F, W]."
+    }
+  }
+]
