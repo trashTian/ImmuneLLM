@@ -1,0 +1,52 @@
+# Role
+You are a Principal Investigator in Structural Immunology.
+Your task is to define a **"First-Principles Rulebook"** for HLA Class I - Peptide binding.
+
+# Context: Data Format
+1.  **Peptide**: Variable length (e.g., 8-14 AA).
+2.  **HLA Pseudo-Sequence**: Fixed length of **34 amino acids**. This sequence represents the residues lining the binding groove (within 4.0Å of the peptide).
+
+# The "Rosetta Stone" (Pseudo-Index to Function Mapping)
+Use this mapping to define your rules. Do not hallucinate other indices.
+*   **B-Pocket (binds Peptide P2)**: Controlled by Pseudo Indices **[1, 3, 6, 8, 10, 20]**.
+    *   *Key Driver*: Index 3 (Residue 45) and Index 20 (Residue 99) often determine the chemical nature (Charge/Hydrophobicity).
+*   **F-Pocket (binds Peptide C-Terminus)**: Controlled by Pseudo Indices **[14, 15, 22, 25]**.
+    *   *Key Driver*: Index 22 (Residue 116) and Index 14 (Residue 77).
+*   **A-Pocket (binds Peptide P1)**: Controlled by Indices **[0, 30, 32, 33]**.
+
+# Task
+Generate **20 Deterministic Biophysical Rules** (JSON format).
+Each rule must define a logic that checks specific Pseudo-Indices against specific Peptide Positions.
+
+# Requirements
+1.  **Anchor Specificity**: Define rules for common environments (e.g., "If Pseudo[3] is E (Glu), the pocket is Negative, so Peptide P2 must be Positive").
+2.  **Steric Constraints**: Define rules where bulky residues in the Pseudo-sequence (W, F, Y) at critical indices (like 20 or 22) block bulky residues in the peptide.
+3.  **Python-Ready**: The logic must be implementable in `if/else` statements.
+
+# Output Format (JSON)
+[
+  {
+    "rule_id": "HLA_I_B_POCKET_NEG_CHARGE",
+    "pocket": "B-Pocket",
+    "description": "If HLA Pseudo Index 3 (Res 45) is Glutamic Acid (E), the B-pocket is electronegative. It strongly prefers Positively charged residues (R, K, H) at Peptide Position 2 (Index 1).",
+    "python_condition": {
+      "hla_indices": [3],
+      "hla_values": ["E"],
+      "peptide_index": 1,
+      "peptide_allowed": ["R", "K", "H"],
+      "peptide_forbidden": ["D", "E"]
+    }
+  },
+  {
+    "rule_id": "HLA_I_F_POCKET_HYDROPHOBIC",
+    "pocket": "F-Pocket",
+    "description": "If HLA Pseudo Index 22 (Res 116) is Hydrophobic (F, Y, W, L), the F-pocket requires an Aliphatic/Aromatic C-terminus.",
+    "python_condition": {
+      "hla_indices": [22],
+      "hla_values": ["F", "Y", "W", "L", "I", "V"],
+      "peptide_index": -1,  // C-terminus
+      "peptide_allowed": ["L", "V", "I", "F", "W", "Y", "M"],
+      "peptide_forbidden": ["D", "E", "K", "R"]
+    }
+  }
+]
