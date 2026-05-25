@@ -7,9 +7,9 @@ Accurate in silico prediction of T-cell antigen binding specificity is a key cha
 ---
 
 ## 🌟 Key Features
-- **Phase A: Symbolic Knowledge Induction**: Explicit biophysical rule integration.
-- **Phase B: Iterative Rationale Refinement**: Logic-aligned reasoning chain generation.
-- **Mechanistic Interpretability**: Audit trails for biophysical decision-making.
+- **Phase A: Symbolic Knowledge Induction**
+- **Phase B: Iterative Rationale Refinement**:
+- **Phase C: Cross-Modal Alignment and Knowledge Fusion**
 
 ---
 
