@@ -1,7 +1,8 @@
 # ImmuneLLM: A Unified Multimodal Framework with Knowledge Fusion for T-cell Antigen Binding Specificity to HLA and TCR Molecules
 
 Accurate in silico prediction of T-cell antigen binding specificity is a key challenge in computational biology, critical for vaccine design and cancer immunotherapy. Existing discriminative methods achieve strong performance by learning sequence patterns but often lack explicit domain knowledge and biophysical explainability. Furthermore, bridging the representational divide to harness generative reasoning for biologically grounded rationale generation remains an unresolved cross-modal problem. To address these gaps, we propose ImmuneLLM, a neuro-symbolic information fusion framework that unifies peptide--HLA and peptide--TCR binding prediction into a knowledge-enhanced generative task. Connecting a pre-trained protein encoder with a Large Language Model via a learnable information bottleneck, the framework filters non-interacting sequence noise and aligns dense physicochemical embeddings with linguistic semantics. To reconcile data-driven statistical correlations with rigid biophysical constraints, we introduce a knowledge fusion pipeline integrating Symbolic Knowledge Induction and Iterative Rationale Refinement. This mechanism dynamically adjudicates conflicts between deterministic rules and latent sequence features, accommodating biological exceptions. Extensive evaluations show that ImmuneLLM achieves robust predictive performance and high data efficiency across multiple datasets. More importantly, it transcends opaque probabilistic scoring to synthesize biologically grounded rationales. Independent validation experiments corroborate the biophysical fidelity of these reasoning chains, providing empirical assurance of their consistency with real-world molecular mechanisms. 
-![image](pipeline.png)
+
+
 
 ---
 
