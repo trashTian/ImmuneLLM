@@ -145,8 +145,6 @@ if __name__ == "__main__":
     main()
 
     """ [A渠道][1额度/次][流式抗截断]gemini-2.5-flash
-    === GPT-4o Evaluation Results (1-5 Scale) ===
     Factuality Score:        3.05 / 5.0 (61.1%)
     Biophysical Soundness:   4.07 / 5.0 (81.4%)
-    Successfully evaluated:  296/300
     """
